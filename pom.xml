@@ -10,7 +10,7 @@
 	<description>Commercial Client Onboarding PAM Style</description>
 	<properties>
 		<version.org.jboss.eap>7.1.0.GA</version.org.jboss.eap>
-		<version.org.kie>7.7.0.Final-redhat-8</version.org.kie>
+		<!-- <version.org.kie>7.7.0.Final-redhat-8</version.org.kie> PAM checks for specific version, doesn't like them in properties -->
 		<version.org.freemarker>2.3.19</version.org.freemarker>
 	</properties>
 	<dependencyManagement>
@@ -31,31 +31,31 @@
 		<dependency>
 			<groupId>org.kie</groupId>
 			<artifactId>kie-api</artifactId>
-			<version>${version.org.kie}</version>
+			<version>7.7.0.Final-redhat-8</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.kie</groupId>
 			<artifactId>kie-internal</artifactId>
-			<version>${version.org.kie}</version>
+			<version>7.7.0.Final-redhat-8</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
       <groupId>org.optaplanner</groupId>
       <artifactId>optaplanner-core</artifactId>
-      <version>${version.org.kie}</version>
+      <version>7.7.0.Final-redhat-8</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>org.optaplanner</groupId>
       <artifactId>optaplanner-persistence-jaxb</artifactId>
-      <version>${version.org.kie}</version>
+      <version>7.7.0.Final-redhat-8</version>
       <scope>provided</scope>
     </dependency>
 		<dependency>
 			<groupId>org.jbpm</groupId>
 			<artifactId>jbpm-document</artifactId>
-			<version>${version.org.kie}</version>
+			<version>7.7.0.Final-redhat-8</version>
 			<scope>compile</scope>
 			<exclusions>
 				<exclusion>
@@ -75,13 +75,13 @@
 		<dependency>
 			<groupId>org.drools</groupId>
 			<artifactId>drools-core</artifactId>
-			<version>${version.org.kie}</version>
+			<version>7.7.0.Final-redhat-8</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.drools</groupId>
 			<artifactId>drools-persistence-jpa</artifactId>
-			<version>${version.org.kie}</version>
+			<version>7.7.0.Final-redhat-8</version>
 			<scope>provided</scope>
 		</dependency>
 
@@ -136,7 +136,7 @@
 			<plugin>
 				<groupId>org.kie</groupId>
 				<artifactId>kie-maven-plugin</artifactId>
-				<version>${version.org.kie}</version>
+				<version>7.7.0.Final-redhat-8</version>
 				<extensions>true</extensions>
 			</plugin>
 		</plugins>
