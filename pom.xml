@@ -4,13 +4,13 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.redhat.bpms.demo.fsi</groupId>
 	<artifactId>commercial-client-onboarding</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
+	<version>7.7.0-SNAPSHOT</version>
 	<packaging>kjar</packaging>
 	<name>commercial-client-onboarding</name>
-	<description>Commercial Client Onboarding</description>
+	<description>Commercial Client Onboarding PAM Style</description>
 	<properties>
-		<version.org.jboss.eap>7.0.0.GA</version.org.jboss.eap>
-		<version.org.kie>6.5.0.Final-redhat-15</version.org.kie>
+		<version.org.jboss.eap>7.1.0.GA</version.org.jboss.eap>
+		<version.org.kie>7.7.0.Final-redhat-8</version.org.kie>
 		<version.org.freemarker>2.3.19</version.org.freemarker>
 	</properties>
 	<dependencyManagement>
@@ -33,8 +33,25 @@
 			<artifactId>kie-api</artifactId>
 			<version>${version.org.kie}</version>
 			<scope>provided</scope>
-			
 		</dependency>
+		<dependency>
+			<groupId>org.kie</groupId>
+			<artifactId>kie-internal</artifactId>
+			<version>${version.org.kie}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+      <groupId>org.optaplanner</groupId>
+      <artifactId>optaplanner-core</artifactId>
+      <version>${version.org.kie}</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.optaplanner</groupId>
+      <artifactId>optaplanner-persistence-jaxb</artifactId>
+      <version>${version.org.kie}</version>
+      <scope>provided</scope>
+    </dependency>
 		<dependency>
 			<groupId>org.jbpm</groupId>
 			<artifactId>jbpm-document</artifactId>
@@ -67,14 +84,14 @@
 			<version>${version.org.kie}</version>
 			<scope>provided</scope>
 		</dependency>
-	
+
 		<!-- Java EE -->
 		<dependency>
 			<groupId>org.hibernate.javax.persistence</groupId>
 			<artifactId>hibernate-jpa-2.1-api</artifactId>
 			<scope>provided</scope>
 		</dependency>
-		
+
 		<!-- Libs -->
 		<dependency>
 			<groupId>org.freemarker</groupId>
@@ -82,7 +99,19 @@
 			<version>${version.org.freemarker}</version>
 			<scope>provided</scope>
 		</dependency>
-		
+
+		<dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.12</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.thoughtworks.xstream</groupId>
+      <artifactId>xstream</artifactId>
+      <version>1.4.10</version>
+      <scope>test</scope>
+    </dependency>
 	</dependencies>
 
 
@@ -107,7 +136,7 @@
 			<plugin>
 				<groupId>org.kie</groupId>
 				<artifactId>kie-maven-plugin</artifactId>
-				<version>6.5.0.Final-redhat-2</version>
+				<version>${version.org.kie}</version>
 				<extensions>true</extensions>
 			</plugin>
 		</plugins>
