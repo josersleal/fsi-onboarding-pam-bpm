@@ -1,0 +1,35 @@
+#!/bin/bash
+
+# This is a 'deploy' action hook script. This script must be executable
+# and will be run by the S2I process just before the original S2I 'run'
+# script is run. This script is to allow a user to run any final steps
+# just before the application is to be started. This can include running
+# background tasks.
+
+set -eo pipefail
+
+# Dump out the set of environment variables which were used by the build.
+
+echo " -----> Environment variables set for the deployed application."
+
+env
+
+# Dump out the name of the current working directory.
+
+echo " -----> Current working directory."
+
+pwd
+
+# Dump out the contents of the current working directory.
+
+echo " -----> Contents of the current working directory after build run."
+
+ls -R .
+
+echo " -----> Register advanced queries."
+
+
+
+#curl -u kieserver:kieserver1! -X PUT -H "Accept: application/json" -H "Content-Type: application/json" -H "X-KIE-ContentType: JSON" -d '{ "query-name" : "getProcessInstancesOfClient", "query-source" : "java:jboss/datasources/ExampleDS", "query-expression" : "select pil.*, c.id as clientId, c.name, c.bic, c.type from ProcessInstanceLog pil inner join (select mv.map_var_id, mv.processinstanceid from MappedVariable mv) mv on (mv.processinstanceid = pil.id) inner join Client c on (c.id = mv.map_var_id)", "query-target" : "PROCESS" }' http://localhost:8080/kie-server/services/rest/server/queries/definitions/getProcessInstancesWithClient
+
+#curl -u kieserver:kieserver1! -X PUT -H "Accept: application/json" -H "Content-Type: application/json" -H "X-KIE-ContentType: JSON" -d '{ "query-name" : "getProcessInstancesOfAccountManager", "query-source" : "java:jboss/datasources/ExampleDS", "query-expression" : "select pil.*, v.variableId, v.value from ProcessInstanceLog pil INNER JOIN VariableInstanceLog v ON (v.processInstanceId = pil.processInstanceId)INNER JOIN (select vil.processInstanceId ,vil.variableId, MAX(vil.ID) maxvilid  FROM VariableInstanceLog vil GROUP BY vil.processInstanceId, vil.variableId ORDER BY vil.processInstanceId)  x ON (v.variableId = x.variableId  AND v.id = x.maxvilid )", "query-target" : "PROCESS" }' http://localhost:8080/kie-server/services/rest/server/queries/definitions/getProcessInstancesWithVars

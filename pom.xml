@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.redhat.bpms.demo.fsi</groupId>
+	<artifactId>commercial-client-onboarding</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<packaging>kjar</packaging>
+	<name>commercial-client-onboarding</name>
+	<description>Commercial Client Onboarding</description>
+	<properties>
+		<version.org.jboss.eap>7.0.0.GA</version.org.jboss.eap>
+		<version.org.kie>6.5.0.Final-redhat-15</version.org.kie>
+		<version.org.freemarker>2.3.19</version.org.freemarker>
+	</properties>
+	<dependencyManagement>
+		<dependencies>
+			<!-- JBoss EAP 7 BOM -->
+			<dependency>
+				<groupId>org.jboss.bom</groupId>
+				<artifactId>jboss-eap-javaee7</artifactId>
+				<version>${version.org.jboss.eap}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+
+	</dependencyManagement>
+	<dependencies>
+		<!-- KIE -->
+		<dependency>
+			<groupId>org.kie</groupId>
+			<artifactId>kie-api</artifactId>
+			<version>${version.org.kie}</version>
+			<scope>provided</scope>
+			
+		</dependency>
+		<dependency>
+			<groupId>org.jbpm</groupId>
+			<artifactId>jbpm-document</artifactId>
+			<version>${version.org.kie}</version>
+			<scope>compile</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>org.kie</groupId>
+					<artifactId>kie-api</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.drools</groupId>
+					<artifactId>drools-core</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-api</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.drools</groupId>
+			<artifactId>drools-core</artifactId>
+			<version>${version.org.kie}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.drools</groupId>
+			<artifactId>drools-persistence-jpa</artifactId>
+			<version>${version.org.kie}</version>
+			<scope>provided</scope>
+		</dependency>
+	
+		<!-- Java EE -->
+		<dependency>
+			<groupId>org.hibernate.javax.persistence</groupId>
+			<artifactId>hibernate-jpa-2.1-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		
+		<!-- Libs -->
+		<dependency>
+			<groupId>org.freemarker</groupId>
+			<artifactId>freemarker</artifactId>
+			<version>${version.org.freemarker}</version>
+			<scope>provided</scope>
+		</dependency>
+		
+	</dependencies>
+
+
+	<repositories>
+		<repository>
+			<id>guvnor-m2-repo</id>
+			<name>Guvnor M2 Repo</name>
+			<url>http://localhost:8080/business-central/maven2/</url>
+		</repository>
+	</repositories>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.7.0</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.kie</groupId>
+				<artifactId>kie-maven-plugin</artifactId>
+				<version>6.5.0.Final-redhat-2</version>
+				<extensions>true</extensions>
+			</plugin>
+		</plugins>
+	</build>
+</project>
